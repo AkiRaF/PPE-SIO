@@ -1,0 +1,96 @@
+body{
+	
+	
+	padding-top: 100px;
+	padding-bottom: 40px;
+	background-color: #eee;
+	background-size: 100%;
+}
+
+#bodyset{
+	position: relative; 
+	margin-left: auto;
+	margin-right: auto;
+	text-align: left;
+}
+
+.form-signin {
+ 	max-width: 350px;
+	padding: 15px;
+	margin: 0 auto;
+	margin-top: 
+	
+}
+
+.navbar a{
+	font-weight: bold;
+	font-size: 20px;
+}
+
+
+.panel{
+	width: 75%;
+	margin-top: 8%;
+	margin-left: 5%;
+}
+
+body p{
+	font-family: "Times New Roman", Times, serif;
+	margin-left: 15%;
+	margin-right: 15%;
+	color: 	#556B2F;
+	font-size: 450%;
+
+}
+
+#connecter input{
+	font-size: 150%;
+	margin-bottom: 5px;
+}
+
+
+.enregiste button{
+	width: 25%;
+}
+
+.enregiste{
+	margin-top: 3%;
+	text-align: center;
+	
+}
+
+
+#nav-tabs a{
+	font-size: 170%;
+	color: #6B8E23;
+	font-weight: bold;
+}
+
+.presentation p {
+	
+	display: block;
+	color: black;
+	margin: auto;
+	text-align: justify;
+	font-size: 145%;
+}		
+
+.presentation h3{
+	color: #556B2F;
+	font-weight: bold;
+}
+
+.ajoutprd p{
+	font-size: 30px;
+	margin-left: 0%;
+	margin-right: 0%;
+}
+
+.ajoutprd{
+	margin-right: 15%;
+	margin-left: 15%;
+}
+
+
+
+
