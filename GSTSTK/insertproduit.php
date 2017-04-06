@@ -26,7 +26,7 @@
 			</div>
 
 			<div class="panel-body">
-				<form id="insert" class="form-horizontal" role="form" method="POST" action="index.php">
+				<form id="insert" class="form-horizontal" role="form" method="POST" action="ajout.php">
                 
 
                 </br></br>

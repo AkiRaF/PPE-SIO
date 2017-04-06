@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 
-<title>GBS-Liste de Produits</title>
+<title>GBS-Médicament allophatique</title>
 	
 </head>
 <body style="position: relative; margin-left: auto;margin-right: auto;text-align: left; width: 55%; background-image: url('img/plante1.jpg');
@@ -18,7 +18,7 @@
 
 	<div class="containe">
 
-		<h1 style="color: #659148; font-weight: bold;margin-top: -20px;font-family: serif;font-size: 400%;"><u>Liste de produits</u></h1></br>
+		<h1 style="color: #659148; font-weight: bold;margin-top: -20px;font-family: serif;font-size: 400%;"><u>Médicament allophatique</u></h1></br>
 
 		<table id="tabStk" style="border-style: solid; border-width: 2px; border-color: black; font-family: serif;">
 			<thead >
