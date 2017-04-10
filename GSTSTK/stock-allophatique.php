@@ -1,3 +1,16 @@
+<?php
+session_start();
+?>
+<?php
+if( isset($_SESSION['ERRMSG_ARR']) && is_array($_SESSION['ERRMSG_ARR']) && count($_SESSION['ERRMSG_ARR']) >0 ) {
+    echo '<ul style="padding:0; color:red; text-align:center;">';
+    foreach($_SESSION['ERRMSG_ARR'] as $msg) {
+        echo '<li>',$msg,'</li>'; 
+    }
+    echo '</ul>';
+    unset($_SESSION['ERRMSG_ARR']);
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -57,20 +70,20 @@
 				  if($value['prd_cat']=="2"){
 				?>
 				<tr>
-					<td  style="border-style: solid; border-width: 2px; border-color: black; text-align: center;background-color: #64A5AC; font-weight: bold;padding-left: 7px;padding-right: 7px;color: white;padding-top: 5px;padding-bottom: 5px; font-size: 20px;">
+					<td  style="border-style: solid; border-width: 2px; border-color: black; text-align: center;background-color: #64A5AC; font-weight: bold;padding-left: 7px;padding-right: 7px;color: white;padding-top: 5px;padding-bottom: 5px; font-size: 20px;" name="id_prd">
 					<?php echo $value['id_prd'];?>
 					</td>
-					<td style="border-style: solid; border-width: 2px; border-color: black;padding-left: 4px;text-align: justify-all;font-weight: bold;background-color: #DAEACD;">
+					<td style="border-style: solid; border-width: 2px; border-color: black;padding-left: 4px;text-align: justify-all;font-weight: bold;background-color: #DAEACD;" name="prd_nom">
 					<?php echo $value['prd_nom'];?>
 					</td>
 					<!--<td style="border-style: solid; border-width: 2px; border-color: black; text-align: center;margin-right: 3px;background-color: #DAEACD;">
 					<?php echo $value['art_cat'];?>-->
 					</td>
-					<td style="border-style: solid; border-width: 2px; border-color: black; text-align: center;margin-right: 3px;background-color: #DAEACD; font-size: 20px;">
+					<td style="border-style: solid; border-width: 2px; border-color: black; text-align: center;margin-right: 3px;background-color: #DAEACD; font-size: 20px;"  name="stk_dispo">
 					<?php echo $value['stk_dispo'];?>
 					</td>
 					<td style="border-style: solid; border-width: 2px; border-color: black; text-align: center;margin-right: 3px;background-color: #DAEACD; font-size: 14px; width: 180px;">
-					<u><a href="modif.php" style="color: black;margin-right: 5px;border-right-width: 2px;border-right-style: solid;padding-right: 10px;" name="modif">Modifier</a></u>
+					<u><a href="modifierclient.php" style="color: black;margin-right: 5px;border-right-width: 2px;border-right-style: solid;padding-right: 10px;" name="modif">Modifier</a></u>
 					<u><a href="supp.php" style="color: red;" onclick="return confirm('Etes-vous sre de supprimer cette article ?');" name="supp">Supprimer</a></u></td>
 				</tr>
 

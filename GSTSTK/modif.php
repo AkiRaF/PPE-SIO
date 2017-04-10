@@ -14,6 +14,7 @@
   <a href="produits.php"><span class="glyphicon glyphicon-arrow-left" style="margin-left: 144px; font-size: 20px; color: green;"> Retour</span></a>
 
 	<?php include("entete.php"); ?>
+    <?php include("connecBDD.php"); ?>
 
     
 
@@ -28,7 +29,11 @@
 			<div class="panel-body">
 				<form id="insert" class="form-horizontal" role="form">
                 
-
+                 <?php
+                    $requete = $bdd->prepare("SELECT * FROM produits where `id_prd` Like '%".$_GET['mod']."%' ");
+                    $requete->execute(array());
+                    $arg= $requete->fetch();   
+                ?>
                 </br></br>
 					<div class="form-group">
                         <label for="nomprd" class="col-md-3 control-label" style="font-size: 16px;">Nom de Produits : </label>
@@ -39,12 +44,8 @@
                 </br></br> 
                     <div class="form-group">
                         <label for="cat" class="col-md-3 control-label" style="font-size: 16px;">Catégorie : </label>
-                            <div class="col-md-8">
-                                <select class="form-control" id="sel1">
-                                <option>Médicaments à base de plantes</option>
-                                <option>Médicaments allopathiques</option>
-                                <option>Médicaments homéopathiques</option>
-                                </select>
+                            <div class="col-md-3">
+                                <input type="text" class="form-control" name="categorie" placeholder="Categorie">
                             </div>
                     </div>
 
