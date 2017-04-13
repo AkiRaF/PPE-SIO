@@ -16,7 +16,33 @@
 	<?php include("entete.php"); ?>
     <?php include("connecBDD.php"); ?>
 
-    
+
+    <!--testModif-->
+
+    <form method="post" action="test/testModif.php">
+     
+           <label for="prd_nom">Dans quel pays habitez-vous ?</label><br />
+           <select name="prd_nom" id="prd_nom">
+    <?php
+
+     
+    $reponse = $bdd->query('SELECT * FROM produits');
+     
+    while ($donnees = $reponse->fetch())
+    {
+    ?>
+        <option value=" <?php echo $donnees['prd_nom']; ?>"> <?php echo $donnees['prd_nom']; ?></option>
+    <?php
+    }
+     
+    //$reponse->closeCursor();
+     
+    ?>
+    </select>
+ 
+    </form>
+
+
 
 	<div class="container" style="margin-top: -50px;">
 
@@ -27,10 +53,10 @@
 			</div>
 
 			<div class="panel-body">
-				<form id="insert" class="form-horizontal" role="form">
+				<form id="insert" class="form-horizontal" role="form" method="GET" action=""> 
                 
                  <?php
-                    $requete = $bdd->prepare("SELECT * FROM produits where `id_prd` Like '%".$_GET['mod']."%' ");
+                    $requete = $bdd->prepare("SELECT * FROM produits where prd_nom=".$_GET['prd_nom']);
                     $requete->execute(array());
                     $arg= $requete->fetch();   
                 ?>
@@ -38,14 +64,16 @@
 					<div class="form-group">
                         <label for="nomprd" class="col-md-3 control-label" style="font-size: 16px;">Nom de Produits : </label>
                             <div class="col-md-8">
-                                <input type="text" class="form-control" name="nomprd" placeholder="Nom de Produit">
+                                <input type="text" class="form-control" name="id_prd" placeholder="Nom de Produit" >
+                                 <?php echo $value['id_prd'];?>
                             </div>
                     </div>
                 </br></br> 
                     <div class="form-group">
                         <label for="cat" class="col-md-3 control-label" style="font-size: 16px;">Catégorie : </label>
                             <div class="col-md-3">
-                                <input type="text" class="form-control" name="categorie" placeholder="Categorie">
+                                <input type="text" class="form-control" name="prd_nom" placeholder="Categorie">
+                                <?php echo $value['prd_nom'];?>
                             </div>
                     </div>
 
@@ -53,13 +81,14 @@
                     </br></br>
                         <label for="prxvente" class="col-sm-3 control-label" style="font-size: 15px;">Stock disponible : </label>
                             <div class="col-sm-3">
-                                <input type="text" class="form-control" name="prxvente" placeholder="Prix vente">
+                                <input type="text" class="form-control" name="stk_dispo" placeholder="">
+                                <?php echo $value['stk_dispo'];?>
                             </div>
 
-                        <label for="prxvente" class="col-sm-2 control-label" style="font-size: 15px;">Prix de Vente :</label>
+                       <!-- <label for="prxvente" class="col-sm-2 control-label" style="font-size: 15px;">Prix de Vente :</label>
                             <div class="col-sm-3">
-                                <input type="text" class="form-control" name="prxvente" placeholder="Prix vente">
-                            </div>
+                                <input type="text" class="form-control" name="stk" placeholder="Prix vente" value="$arg[id_prd]">
+                            </div>-->
                     </div>
 
                    

@@ -76,15 +76,16 @@ if( isset($_SESSION['ERRMSG_ARR']) && is_array($_SESSION['ERRMSG_ARR']) && count
 					<td style="border-style: solid; border-width: 2px; border-color: black;padding-left: 4px;text-align: justify-all;font-weight: bold;background-color: #DAEACD;" name="prd_nom">
 					<?php echo $value['prd_nom'];?>
 					</td>
-					<!--<td style="border-style: solid; border-width: 2px; border-color: black; text-align: center;margin-right: 3px;background-color: #DAEACD;">
-					<?php echo $value['art_cat'];?>-->
+					<td style="border-style: solid; border-width: 2px; border-color: black; text-align: center;margin-right: 3px;background-color: #DAEACD; " name="prd_cat">
+					<?php echo $value['prd_cat'];?>
 					</td>
 					<td style="border-style: solid; border-width: 2px; border-color: black; text-align: center;margin-right: 3px;background-color: #DAEACD; font-size: 20px;"  name="stk_dispo">
 					<?php echo $value['stk_dispo'];?>
 					</td>
 					<td style="border-style: solid; border-width: 2px; border-color: black; text-align: center;margin-right: 3px;background-color: #DAEACD; font-size: 14px; width: 180px;">
-					<u><a href="modifierclient.php" style="color: black;margin-right: 5px;border-right-width: 2px;border-right-style: solid;padding-right: 10px;" name="modif">Modifier</a></u>
-					<u><a href="supp.php" style="color: red;" onclick="return confirm('Etes-vous sre de supprimer cette article ?');" name="supp">Supprimer</a></u></td>
+					<u><a href="modif.php" style="color: black;margin-right: 5px;border-right-width: 2px;border-right-style: solid;padding-right: 10px;" name="modif">Modifier</a></u>
+					<?php echo "<u><a href='supp.php?id=" . $value['id_prd']."' name='supp'>Suprimer</a></u>"; ?>
+					</td>
 				</tr>
 
 			<?php

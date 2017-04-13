@@ -16,6 +16,8 @@
 	<a href="produits.php"><span class="glyphicon glyphicon-arrow-left" style="margin-left: -150px; font-size: 20px; color: green;"> Retour</span></a>
 	</br>
 
+
+
 	<div class="containe">
 
 		<h1 style="color: #659148; font-weight: bold;margin-top: -20px;font-family: serif;font-size: 400%;"><u>Médicament à base de Plantes</u></h1></br>
@@ -25,7 +27,7 @@
 				<tr style="background-color: #64A5AC; color: white;font-size: 30px;">
 					<th style='border-style: solid; border-width: 2px; border-color: black;text-align: center;'>Id</th>
 					<th style='border-style: solid; border-width: 2px; border-color: black;text-align: center;>'>Nom de Produit</th>
-					<!--<th style='border-style: solid; border-width: 2px; border-color: black;text-align: center;padding-left: 3px;padding-right: 3px;>'> Catagorie</th>-->
+					<th style='border-style: solid; border-width: 2px; border-color: black;text-align: center;padding-left: 3px;padding-right: 3px;>'> Catagorie</th>
 					<th style='border-style: solid; border-width: 2px; border-color: black;text-align: center; font-size: 20px; padding-left: 2%;padding-right: 2%;>'>Stock dispo</th>
 				</tr>
 			</thead >
@@ -63,15 +65,16 @@
 					<td style="border-style: solid; border-width: 2px; border-color: black;padding-left: 4px;text-align: justify-all;font-weight: bold;background-color: #DAEACD;">
 					<?php echo $value['prd_nom'];?>
 					</td>
-					<!--<td style="border-style: solid; border-width: 2px; border-color: black; text-align: center;margin-right: 3px;background-color: #DAEACD;">
-					<?php echo $value['art_cat'];?>-->
+					<td style="border-style: solid; border-width: 2px; border-color: black; text-align: center;margin-right: 3px;background-color: #DAEACD;">
+					<?php echo $value['prd_cat'];?>
 					</td>
 					<td style="border-style: solid; border-width: 2px; border-color: black; text-align: center;margin-right: 3px;background-color: #DAEACD; font-size: 20px;">
 					<?php echo $value['stk_dispo'];?>
 					</td>
+
 					<td style="border-style: solid; border-width: 2px; border-color: black; text-align: center;margin-right: 3px;background-color: #DAEACD; font-size: 14px; width: 180px;">
-					<u><a href="modif.php" style="color: black;margin-right: 5px;border-right-width: 2px;border-right-style: solid;padding-right: 10px;">Modifier</a></u>
-					<u><a href="supp.php" style="color: red;" onclick="return confirm('Etes-vous sre de supprimer cette article ?');">Supprimer</a></u></td>
+					<u><a href="modifierclient.php" style="color: black;margin-right: 5px;border-right-width: 2px;border-right-style: solid;padding-right: 10px;">Modifier</a></u>
+					<?php echo "<u><a href='supp.php?id=" . $value['id_prd']."' name='supp'>Suprimer</a></u>"; ?></td>
 				</tr>
 
 

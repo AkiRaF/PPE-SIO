@@ -8,6 +8,7 @@
     		$sel->execute(array('nomprd' => $nomprd));
     		$count = $sel->rowCount();
 
+
     		if($count){
                 echo '<script language="Javascript">
                     alert ("Ce nom de produit a déjà existé, il n\' pas été enregistrer" )
@@ -35,8 +36,14 @@
 
 
     		}
+        }else{
+            echo '<script language="Javascript">
+                    alert ("Vérifier bien le champ à remplir !" )
+                    window.location ="insertproduit.php";
+                    </script>';
 
-    	}
+        }
+     
 
     //include('produits.php');
     	

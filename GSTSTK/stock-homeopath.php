@@ -70,8 +70,10 @@
 					<?php echo $value['stk_dispo'];?>
 					</td>
 					<td style="border-style: solid; border-width: 2px; border-color: black; text-align: center;margin-right: 3px;background-color: #DAEACD; font-size: 14px; width: 180px;">
-					<u><a href="modif.php" style="color: black;margin-right: 5px;border-right-width: 2px;border-right-style: solid;padding-right: 10px;">Modifier</a></u>
-					<u><a href="supp.php" style="color: red;" onclick="return confirm('Etes-vous sre de supprimer cette article ?');">Supprimer</a></u></td>
+					<!--<u><a href="modifierclient.php?id=" style="color: black;margin-right: 5px;border-right-width: 2px;border-right-style: solid;padding-right: 10px;">Modifier</a></u>-->
+					<?php echo "<u><a href='modifierclient.php?id=" . $value['id_prd']."' name='supp'>Modifier</a></u>"; ?>
+					<?php echo "<u><a href='supp.php?id=" . $value['id_prd']."' name='supp'>Suprimer</a></u>"; ?>
+					</td>
 				</tr>
 
 			<?php

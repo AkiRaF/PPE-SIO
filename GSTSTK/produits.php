@@ -38,8 +38,10 @@ if( isset($_SESSION['ERRMSG_ARR']) && is_array($_SESSION['ERRMSG_ARR']) && count
 			
 			<br/>
 
-			<div class="col-md-offset-10 col-md-2">
-			<a href="insertproduit.php" type="button" class="btn btn-sm btn-success" href="ajouterprd.php">Ajoute nouveaux produits</a>
+			<div class="col-md-offset-8 col-md-5 ">
+				<a href="insertproduit.php" type="button" class="btn btn-sm btn-success" href="ajouterprd.php">Ajoute nouveaux produits</a>
+				<a href="" type="button" class="btn btn-sm btn-info" href="ajouterprd.php" style="">Modifier des produits</a>
+				
 			</div>
 
 			<div class="presentation">
