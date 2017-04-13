@@ -23,7 +23,7 @@
 			        'cat' => $_POST['cate'],
 			        'stkdispo' => $_POST['stkdispo'],
 			        'stkmin' => $_POST['stkmin'],
-			        'stkmax' => $_POST['stkmax']
+			        'stkmax' => $_POST['stkmax'],
 	        ));
 
                 echo '<script language="Javascript">

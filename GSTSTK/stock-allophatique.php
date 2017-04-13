@@ -83,8 +83,10 @@ if( isset($_SESSION['ERRMSG_ARR']) && is_array($_SESSION['ERRMSG_ARR']) && count
 					<?php echo $value['stk_dispo'];?>
 					</td>
 					<td style="border-style: solid; border-width: 2px; border-color: black; text-align: center;margin-right: 3px;background-color: #DAEACD; font-size: 14px; width: 180px;">
-					<u><a href="modif.php" style="color: black;margin-right: 5px;border-right-width: 2px;border-right-style: solid;padding-right: 10px;" name="modif">Modifier</a></u>
+					<!--<u><a href="modif.php" style="color: black;margin-right: 5px;border-right-width: 2px;border-right-style: solid;padding-right: 10px;" name="modif">Modifier</a></u>-->
+					<?php echo "<u><a href='modif.php?id=" . $value['id_prd']."' name='modif'>Modifier</a></u>"; ?>
 					<?php echo "<u><a href='supp.php?id=" . $value['id_prd']."' name='supp'>Suprimer</a></u>"; ?>
+
 					</td>
 				</tr>
 

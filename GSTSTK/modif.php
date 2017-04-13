@@ -11,107 +11,116 @@
   background-repeat: no-repeat;
   background-attachment:fixed;">
 
-  <a href="produits.php"><span class="glyphicon glyphicon-arrow-left" style="margin-left: 144px; font-size: 20px; color: green;"> Retour</span></a>
+  <a href=""><span class="glyphicon glyphicon-arrow-left" style="margin-left: 144px; font-size: 20px; color: green;"> Retour</span></a>
 
-	<?php include("entete.php"); ?>
-    <?php include("connecBDD.php"); ?>
+  <div class="container" style="margin-top: -50px;">
+
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <div class="panel-title" style="font-size: 30px; font-weight: bold;">Modifier de prosuits</div>
+
+            </div>
+        <?php
+        include('entete.php');
+        include('connecBDD.php');
+
+        if(isset($_GET['id']) && !empty($_GET['id'])){
+            $id = $_GET['id'];
+            $sql = "SELECT * FROM produits WHERE id_prd = :id";
+            $req = array('id' =>$id);
+            $res = $bdd->prepare($sql);
+            $res -> execute($req);
+
+            while($sql = $res ->fetch() )
+               
+            {
+
+                 $value = $sql;
+            ?>
+                    <div class="panel-body">
+                                <form id="insert" class="form-horizontal" role="form" method="POST" action="test/testModif.php">
+                                
+
+                                </br></br>
+                                   
+                                    <div class="form-group">
+
+                                        <label for="idprd" class="col-md-3 control-label" style="font-size: 16px;" name="idprd">Id :</label>
+                                            <div class="col-sm-2">
+                                                <input type="text" class="form-control" value="<?php echo $value['id_prd'];?>" name="idprd" style="width: 100%;background-color: #DCDADA;width: 50%"/>
+                                            </div>
+
+                                        
+                                        
+                                    </div>
+
+                                    <div class="form-group">
+
+                                        <label  class="col-md-3 control-label" style="font-size: 16px;">Nom de Produits : </label>
+                                            <div class="col-md-8">
+                                                <input for="nomprd"  type="text" class="form-control" name="nomprd" placeholder="Nom de Produit" value="<?php echo $value['prd_nom'];?>">
+                                            </div>
+
+                                    </div>
+                                    
+                                </br></br> 
+                                    <div class="form-group col-md-12">
+
+                                        <label for="cat" class="col-md-3 control-label" style="font-size: 16px;">Catégorie* : </label>
+                                            <div class="col-md-3">
+                                                <select class="form-control" id="sel1" name="cate">
+                                                
+                                                <option value="<?php echo $value['prd_cat'];?>" style=""><?php echo $value['prd_cat'];?></option>
+                                                <option >1</option>
+                                                <option >2</option>
+                                                <option >3</option>
+                                               
+                                                </select>
+                                            </div>
 
 
-    <!--testModif-->
+                                        <label for="stkdispo" class="col-md-2 control-label" style="font-size: 15px;">Stock dispo :</label>
+                                            <div class="col-md-3"> 
+                                                <input type="text" class="form-control" name="stkdispo" value="<?php echo $value['stk_dispo'];?>" style="width: 100%;">
+                                            </div>     
+                                    </div>
 
-    <form method="post" action="test/testModif.php">
-     
-           <label for="prd_nom">Dans quel pays habitez-vous ?</label><br />
-           <select name="prd_nom" id="prd_nom">
-    <?php
+                                    <div class="form-group">
+    
+                                          
+                                    </div>
 
-     
-    $reponse = $bdd->query('SELECT * FROM produits');
-     
-    while ($donnees = $reponse->fetch())
-    {
-    ?>
-        <option value=" <?php echo $donnees['prd_nom']; ?>"> <?php echo $donnees['prd_nom']; ?></option>
-    <?php
-    }
-     
-    //$reponse->closeCursor();
-     
-    ?>
-    </select>
- 
-    </form>
+                    </br></br>
+                        <div style="text-align: center;">
+                            <input type="submit" name="valid" value="Envoyer" style="text-align: center;"></span>
+                       </div>
+                </form>
+            </div>
 
+             </br>
+                 <p style="font-size: 12px;margin-right: 20px;"> * 1 = Medicalements à base de plantes / 2 = Médicalements allopathiques / 3 = Médicalements homéopathiques.</p>
 
+                                  
+                <?php
 
-	<div class="container" style="margin-top: -50px;">
+                }
+                    
+                }
+                    
+                $res->closeCursor();
 
-		<div class="panel panel-success">
-			<div class="panel-heading">
-				<div class="panel-title" style="font-size: 30px; font-weight: bold;">Modifier</div>
-
-			</div>
-
-			<div class="panel-body">
-				<form id="insert" class="form-horizontal" role="form" method="GET" action=""> 
-                
-                 <?php
-                    $requete = $bdd->prepare("SELECT * FROM produits where prd_nom=".$_GET['prd_nom']);
-                    $requete->execute(array());
-                    $arg= $requete->fetch();   
                 ?>
-                </br></br>
-					<div class="form-group">
-                        <label for="nomprd" class="col-md-3 control-label" style="font-size: 16px;">Nom de Produits : </label>
-                            <div class="col-md-8">
-                                <input type="text" class="form-control" name="id_prd" placeholder="Nom de Produit" >
-                                 <?php echo $value['id_prd'];?>
-                            </div>
-                    </div>
-                </br></br> 
-                    <div class="form-group">
-                        <label for="cat" class="col-md-3 control-label" style="font-size: 16px;">Catégorie : </label>
-                            <div class="col-md-3">
-                                <input type="text" class="form-control" name="prd_nom" placeholder="Categorie">
-                                <?php echo $value['prd_nom'];?>
-                            </div>
-                    </div>
 
-                    <div class="form-group">
-                    </br></br>
-                        <label for="prxvente" class="col-sm-3 control-label" style="font-size: 15px;">Stock disponible : </label>
-                            <div class="col-sm-3">
-                                <input type="text" class="form-control" name="stk_dispo" placeholder="">
-                                <?php echo $value['stk_dispo'];?>
-                            </div>
+        </div>
 
-                       <!-- <label for="prxvente" class="col-sm-2 control-label" style="font-size: 15px;">Prix de Vente :</label>
-                            <div class="col-sm-3">
-                                <input type="text" class="form-control" name="stk" placeholder="Prix vente" value="$arg[id_prd]">
-                            </div>-->
-                    </div>
+    </div>
 
-                   
-                    </br></br>
-
-                    <div class="form-group">
-                        <!-- Button -->                                        
-                        <div class="enregiste">
-                            <button id="btn-enregist" type="button" class="btn btn-success" onclick="return confirm('Etes-vous sûre de supprimer cette article ?');"><i class="icon-hand-right"></i>&nbspEnregiste</button>
-                           <!--<button id="btn-annuler" type="button" class="btn btn-warning"><i class="icon-hand-right"></i>&nbspAnnuler</button>-->
-                            
-                        </div>
-                       
-                    </div>
-				</form>
-				
-			</div>
-
-
-		</div>
-	</div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="bootstrap/js/bootstrap.min.js"></script>
 </body>
 </html>
+
+
+
+
