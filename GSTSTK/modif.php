@@ -27,7 +27,7 @@
         if(isset($_GET['id']) && !empty($_GET['id'])){
             $id = $_GET['id'];
             $sql = "SELECT * FROM produits WHERE id_prd = :id";
-            $req = array('id' =>$id);
+            $req = array(':id' =>$id); // FAY : ici les : sont utiles
             $res = $bdd->prepare($sql);
             $res -> execute($req);
 
@@ -38,7 +38,7 @@
                  $value = $sql;
             ?>
                     <div class="panel-body">
-                                <form id="insert" class="form-horizontal" role="form" method="POST" action="test/testModif.php">
+                                <form id="insert" class="form-horizontal" role="form" method="POST" action="./test/testModifUpdate.php"><!-- FAY : ici faire attention à mettre la bonne url -->
                                 
 
                                 </br></br>

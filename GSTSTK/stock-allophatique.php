@@ -46,7 +46,6 @@ if( isset($_SESSION['ERRMSG_ARR']) && is_array($_SESSION['ERRMSG_ARR']) && count
 	
 			<?php 
 
-				include("entete.php");
 				
 				include("connecBDD.php"); 
 
