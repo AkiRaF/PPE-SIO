@@ -25,7 +25,7 @@ include('../connecBDD.php');
   // FAY : produits.php n'existe pas
    echo '<script language="Javascript">
                     alert ("Ce produit a été modifier !" )
-                    window.location ="produits.php";
+                    window.location ="../modif.php";
                     </script>';
 
   

@@ -17,7 +17,7 @@
 
         <div class="panel panel-success">
             <div class="panel-heading">
-                <div class="panel-title" style="font-size: 30px; font-weight: bold;">Modifier de prosuits</div>
+                <div class="panel-title" style="font-size: 30px; font-weight: bold;">Modifier de produits</div>
 
             </div>
         <?php
@@ -38,7 +38,7 @@
                  $value = $sql;
             ?>
                     <div class="panel-body">
-                                <form id="insert" class="form-horizontal" role="form" method="POST" action="./test/testModifUpdate.php"><!-- FAY : ici faire attention à mettre la bonne url -->
+                                <form id="insert" class="form-horizontal" role="form" method="POST" action="./test/testModif.php"><!-- FAY : ici faire attention à mettre la bonne url -->
                                 
 
                                 </br></br>
@@ -107,7 +107,7 @@
                     
                 }
                     
-                $res->closeCursor();
+                //$res->closeCursor();
 
                 ?>
 
