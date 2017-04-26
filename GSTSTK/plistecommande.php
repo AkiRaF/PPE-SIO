@@ -19,7 +19,7 @@
 
 	<?php include("entete.php"); ?>
 	<div class="containe" style="margin-left: 30px ;">
-
+	<form name="listcmd" method="POST">
 	<h1 style="color: #659148; font-weight: bold;font-family: serif;font-size: 400%;"><u>Liste de Produits à commander</u></h1></br></br>
 	<table id="tabStk" style="border-style: solid; border-width: 2px; border-color: black; font-family: serif;">
 			<thead >
@@ -35,6 +35,66 @@
 
 	<?php
   include ('connecBDD.php');
+
+  if(isset($_POST['qnt'])){
+    echo '<pre>';
+    var_dump($_POST['qnt']);
+    echo '</pre>';
+
+    $insertcmd = true;
+    foreach($_POST['qnt'] as $key=>$value){
+      if($value > 200){
+        echo "Vous popuvez commander au maximum 100 ".$key;
+
+        $insertcmd = false;
+
+        break;
+
+      }
+    }
+
+   
+    if($insertcmd){
+        /*try {
+           $reponse = $bdd->prepare('INSERT INTO commande (cmd_cpt) VALUES ("FVR")');
+
+            try {
+                $bdd->beginTransaction();
+                $reponse->execute();
+                $cmd_id = $bdd->lastInsertId();
+                $bdd->commit();
+            } catch(PDOExecption $e) {
+                $bdd->rollback();
+                print "Error INSERTION: " . $e->getMessage() . "</br>";
+            }
+        } catch( PDOExecption $e ) {
+            print "Error DE CONNEXTION A LA BASE!: " . $e->getMessage() . "</br>";
+        }*/
+
+
+    // requete id LIMIT 0,1 DESC sur commande
+    
+      foreach($_POST['qnt'] as $key=>$value){
+        if($value > 0){
+          // echo $key.' '.$value.'<br/>';
+          $insertion = "INSERT INTO listcommande (id_prd, lcmd_qnt) VALUES (:nom_art, :qnt_art)";
+          $newitem = $bdd->prepare($insertion);
+          $newitem->execute(array(
+            //":cmd_cpt" => $cmd_id,
+            ":nom_art" => $key,
+            ":qnt_art" =>$value         
+            ));
+
+
+        }
+      }
+    }
+  }
+
+
+
+
+
   $req= 'SELECT * FROM produits';
   $reponse = $bdd->prepare($req);
   $reponse->execute(array(1));
@@ -43,6 +103,9 @@
     $tab[]=$req;
     
   }
+  ?>
+
+  <?php
   foreach ($tab as $key => $value) {
     if($value['stk_dispo'] <= $value['stk_min']){
     //echo ("tab : ".$value['art_nom']."</br>");
@@ -60,7 +123,7 @@
 					<?php echo $value['stk_dispo'];?>
 					</td>
 					<td style="border-style: solid; border-width: 2px; border-color: black; text-align: center;margin-right: 3px;background-color: #DAEACD; font-size: 20px; width: 2%">
-					<input type="number" name="qnt" style="width: 85%">
+					<input type="text" name="qnt[<?php echo $value['id_prd']; ?>]" style="width: 85%">
 					</td>
 					
 				</tr>
@@ -80,7 +143,10 @@ $reponse->closeCursor();
 		</table>
 		</br></br></br></br>
 		
-		<input type="submit" name="envoye" value="Envoyer" style="width: 20%">
+		<input type="submit" name="envoye" value="Envoyer" style="width: 20%" onclick="VALID()">
+		<script type="text/javascript" src="fnb.js">
+		</script>
+		</form>
 	</div>
 	</br></br>
 		
