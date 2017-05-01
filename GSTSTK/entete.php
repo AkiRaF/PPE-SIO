@@ -14,12 +14,7 @@
   <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container_fluid">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
+      
       <a class="navbar-brand" href=""><img src="img/logoGSB.png" width="70" height="30" style="margin-left:10px;"></a>
     </div>
     <div id="navbar" class="collapse navbar-collapse">
@@ -30,8 +25,8 @@
       
       </ul>
       <ul class="nav navbar-nav navbar-right">
-              
-        <li><a href="deconnexion.php"><span class="glyphicon glyphicon-log-in" style="font-size:18px; margin-right:20px"></span></a></li>      
+        <li><p style="font-size: 20px;">Bonjour <?php echo $_SESSION['uname'];?></p></li> 
+        <li><a href="deconnexion.php">Se déconnecter <span class="glyphicon glyphicon-log-in" style="font-size:18px; margin-right:20px"></span></a></li>      
       </ul>
     </div>
   </div>

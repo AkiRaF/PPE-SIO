@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.5.1
--- http://www.phpmyadmin.net
+-- version 4.6.4
+-- https://www.phpmyadmin.net/
 --
 -- Client :  127.0.0.1
--- Généré le :  Mar 14 Mars 2017 à 15:05
--- Version du serveur :  5.7.11
--- Version de PHP :  5.6.19
+-- Généré le :  Lun 01 Mai 2017 à 23:05
+-- Version du serveur :  5.7.14
+-- Version de PHP :  5.6.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `categorie` (
   `id_cat` int(11) NOT NULL,
   `cat_nom` varchar(255) NOT NULL
-)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `categorie`
@@ -43,15 +43,21 @@ INSERT INTO `categorie` (`id_cat`, `cat_nom`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `members`
+-- Structure de la table `listcommande`
 --
 
-CREATE TABLE `members` (
-  `id` int(11) NOT NULL,
-  `fname` varchar(100) NOT NULL,
-  `lname` varchar(100) NOT NULL,
-  `age` int(5) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+CREATE TABLE `listcommande` (
+  `id_lcmd` int(11) NOT NULL,
+  `id_prd` int(11) NOT NULL,
+  `lcmd_qnt` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `listcommande`
+--
+
+INSERT INTO `listcommande` (`id_lcmd`, `id_prd`, `lcmd_qnt`) VALUES
+(1, 1, 40);
 
 -- --------------------------------------------------------
 
@@ -66,7 +72,7 @@ CREATE TABLE `produits` (
   `stk_dispo` int(11) NOT NULL,
   `stk_min` int(11) NOT NULL,
   `stk_max` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `produits`
@@ -138,7 +144,9 @@ INSERT INTO `produits` (`id_prd`, `prd_nom`, `prd_cat`, `stk_dispo`, `stk_min`, 
 (63, 'ADVILCAPS 400 mg 14 capsules(molle)\r\nIbuprofène', 2, 50, 10, 100),
 (64, 'ADVILEFF 200 mg 12 comprimés(effervescent)\r\nIbuprofène', 2, 50, 10, 100),
 (65, 'ADVILGEL 5 % 60g (gel)\r\nIbuprofène', 2, 50, 10, 100),
-(66, 'ADVIL 200 mg 20 comprimés(enrobé)\r\nIbuprofène', 2, 50, 10, 100);
+(66, 'ADVIL 200 mg 20 comprimés(enrobé)\r\nIbuprofène', 2, 50, 10, 100),
+(74, 'fdfgdfg', 3, 20, 20, 200),
+(72, 'mmmf;f;;f', 2, 40, 20, 200);
 
 -- --------------------------------------------------------
 
@@ -150,7 +158,7 @@ CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `username` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `users`
@@ -160,27 +168,6 @@ INSERT INTO `users` (`id`, `username`, `password`) VALUES
 (1, 'admin', 'admin'),
 (2, 'Fay', 'Fay'),
 (3, '123', '123');
-
--- --------------------------------------------------------
-
---
--- Structure de la table `utilisateur`
---
-
-CREATE TABLE `utilisateur` (
-  `id_user` int(11) NOT NULL,
-  `user_nom` varchar(255) NOT NULL,
-  `user_prenom` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `user_mdp` varchar(13) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Contenu de la table `utilisateur`
---
-
-INSERT INTO `utilisateur` (`id_user`, `user_nom`, `user_prenom`, `email`, `user_mdp`) VALUES
-(1, 'AMPORNPRAPA', 'Bongkoch', 'lapin_f2003@hotmail.com', '123456');
 
 --
 -- Index pour les tables exportées
@@ -193,10 +180,10 @@ ALTER TABLE `categorie`
   ADD PRIMARY KEY (`id_cat`);
 
 --
--- Index pour la table `members`
+-- Index pour la table `listcommande`
 --
-ALTER TABLE `members`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE `listcommande`
+  ADD PRIMARY KEY (`id_lcmd`);
 
 --
 -- Index pour la table `produits`
@@ -212,12 +199,6 @@ ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `utilisateur`
---
-ALTER TABLE `utilisateur`
-  ADD PRIMARY KEY (`id_user`);
-
---
 -- AUTO_INCREMENT pour les tables exportées
 --
 
@@ -227,35 +208,20 @@ ALTER TABLE `utilisateur`
 ALTER TABLE `categorie`
   MODIFY `id_cat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
--- AUTO_INCREMENT pour la table `members`
+-- AUTO_INCREMENT pour la table `listcommande`
 --
-ALTER TABLE `members`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `listcommande`
+  MODIFY `id_lcmd` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT pour la table `produits`
 --
 ALTER TABLE `produits`
-  MODIFY `id_prd` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
+  MODIFY `id_prd` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
 --
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
---
--- AUTO_INCREMENT pour la table `utilisateur`
---
-ALTER TABLE `utilisateur`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
---
--- Contraintes pour les tables exportées
---
-
---
--- Contraintes pour la table `produits`
---
-ALTER TABLE `produits`
-  ADD CONSTRAINT `fk_categorie` FOREIGN KEY (`prd_cat`) REFERENCES `categorie` (`id_cat`);
-
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
