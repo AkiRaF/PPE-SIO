@@ -1,5 +1,5 @@
 <?php
-include('../connecBDD.php');
+include('connecBDD.php');
 
   
   $sql = 'UPDATE produits SET prd_nom = :prd_nom, prd_cat = :prd_cat, stk_dispo = :stk_dispo WHERE id_prd = :id_prd';
@@ -13,7 +13,7 @@ include('../connecBDD.php');
 
    echo '<script language="Javascript">
                     alert ("Ce produit a été modifier !" )
-                    window.location ="../modif.php";
+                    window.location ="modif.php";
                     </script>';
 
   

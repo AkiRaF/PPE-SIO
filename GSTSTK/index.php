@@ -4,7 +4,7 @@ session_start();
 $errmsg_arr = array();
 $errflag = false;
 
-include("connecBDD.php"); 
+include("connecBDD.php");
 
 // new data
 
@@ -29,16 +29,19 @@ $result->bindParam(':asas', $password);
 $result->execute();
 $rows = $result->fetch(PDO::FETCH_NUM);
 if($rows > 0) {
-header("location: produits.php");
+header("location: paccueil.php");
+
 }
 else{
     $errmsg_arr[] = 'Vous n\'êtes pas administrateur - Votre nom d\'utiliser ou mot de passe incorrect !';
     $errflag = true;
 }
+
 if($errflag) {
     $_SESSION['ERRMSG_ARR'] = $errmsg_arr;
     session_write_close();
-    header("location: home.php");
+    header("location: pconnec.php");
+    
     exit();
 }
 

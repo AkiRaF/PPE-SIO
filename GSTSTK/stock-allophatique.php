@@ -26,7 +26,7 @@ if( isset($_SESSION['ERRMSG_ARR']) && is_array($_SESSION['ERRMSG_ARR']) && count
   background-repeat: no-repeat;
   background-attachment:fixed;">
 
-	<a href="produits.php"><span class="glyphicon glyphicon-arrow-left" style="margin-left: -150px; font-size: 20px; color: green;"> Retour</span></a>
+	<a href="paccueil.php"><span class="glyphicon glyphicon-arrow-left" style="margin-left: -150px; font-size: 20px; color: green;"> Retour</span></a>
 	</br>
 
 	<div class="containe">
@@ -39,24 +39,21 @@ if( isset($_SESSION['ERRMSG_ARR']) && is_array($_SESSION['ERRMSG_ARR']) && count
 					<th style='border-style: solid; border-width: 2px; border-color: black;text-align: center;'>Id</th>
 					<th style='border-style: solid; border-width: 2px; border-color: black;text-align: center;>'>Nom de Produit</th>
 					<th style='border-style: solid; border-width: 2px; border-color: black;text-align: center;padding-left: 3px;padding-right: 3px;>'> Catagorie</th>
-					<th style='border-style: solid; border-width: 2px; border-color: black;text-align: center; font-size: 20px; padding-left: 2%;padding-right: 2%;>'>Stock dispo</th>
+					<th style='border-style: solid; border-width: 2px; border-color: black;text-align: center; font-size: 20px; padding-left: 2%;padding-right: 2%;width: 15%;'>Stock dispo</th>
 				</tr>
 			</thead >
 			<tbody style="border-style: solid; border-width: 2px; border-color: black; text-align: justify-all;">
 	
 			<?php 
 
-				
+				include("entete.php");
 				include("connecBDD.php"); 
 
 			
 
 			//
 
-			/*$reponse = $bdd->prepare('SELECT produits.id_prd, produits.prd_nom, produits.prd_cat, categorie.cat_nom
-										FROM produits
-
-										INNER JOIN categorie ON produits.prd_cat = categorie.id_cat');*/
+			
 			$reponse = $bdd->query('SELECT * FROM produits');
 			$reponse->execute(array(1));
 	
@@ -82,12 +79,14 @@ if( isset($_SESSION['ERRMSG_ARR']) && is_array($_SESSION['ERRMSG_ARR']) && count
 					<?php echo $value['stk_dispo'];?>
 					</td>
 					<td style="border-style: solid; border-width: 2px; border-color: black; text-align: center;margin-right: 3px;background-color: #DAEACD; font-size: 14px; width: 180px;">
-					<!--<u><a href="modif.php" style="color: black;margin-right: 5px;border-right-width: 2px;border-right-style: solid;padding-right: 10px;" name="modif">Modifier</a></u>-->
+					
 					<?php echo "<u><a href='modif.php?id=" . $value['id_prd']."' name='modif'>Modifier</a></u>"; ?>
-					<?php echo "<u><a href='supp.php?id=" . $value['id_prd']."' name='supp'>Suprimer</a></u>"; ?>
+					<?php echo "<u><a href='supp.php?id=" . $value['id_prd']."' name='supp' style='color: RED;' onclick='Supp(this.href); return(false);'>Suprimer</a></u>"; ?>
 
 					</td>
 				</tr>
+
+				
 
 			<?php
 			}	
@@ -95,6 +94,14 @@ if( isset($_SESSION['ERRMSG_ARR']) && is_array($_SESSION['ERRMSG_ARR']) && count
 			$reponse->closeCursor();
 
 			?>
+			
+			<script type="text/javascript">
+				function Supp(link){
+					if(confirm('Êtes-vous sûre de supprimer ce produit ?')){
+					document.location.href = link;
+					}
+				}
+			</script>
 
 
 			</tbody>

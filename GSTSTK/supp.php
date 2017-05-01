@@ -1,5 +1,10 @@
 <!--testModif-->
 <?php
+
+	session_start();
+	//echo 'Welcome '.$_SESSION['username'];
+?>
+<?php
 include('connecBDD.php');
 
 if(isset($_GET['id']) && !empty($_GET['id'])){
@@ -9,11 +14,12 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
 	$res = $bdd->prepare($sql);
 	$res -> execute($req);
 
-
-	 echo '<script language="Javascript">
-                    alert ("Ce produit a été supprimer !" )
-                    window.location ="produits.php";
-                    </script>';
+	if($res == true){
+		 echo '<script language="Javascript">
+	                    alert ("Ce produit a été supprimer !" )
+	                    window.location ="paccueil.php";
+	                    </script>';
+	}
 }
 	
 $res->closeCursor();

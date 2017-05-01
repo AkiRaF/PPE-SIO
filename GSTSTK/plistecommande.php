@@ -1,3 +1,8 @@
+<?php
+
+	session_start();
+	//echo 'Welcome '.$_SESSION['username'];
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +19,7 @@
   background-repeat: no-repeat;
   background-attachment:fixed;">
 
-  	<a href="produits.php"><span class="glyphicon glyphicon-arrow-left" style="margin-left: -65px; font-size: 20px; color: green;"> Retour</span></a>
+  	<a href="paccueil.php"><span class="glyphicon glyphicon-arrow-left" style="margin-left: -65px; font-size: 20px; color: green;"> Retour</span></a>
    
 
 	<?php include("entete.php"); ?>
@@ -37,14 +42,14 @@
   include ('connecBDD.php');
 
   if(isset($_POST['qnt'])){
-    echo '<pre>';
+    /*echo '<pre>';
     var_dump($_POST['qnt']);
-    echo '</pre>';
+    echo '</pre>';*/
 
     $insertcmd = true;
     foreach($_POST['qnt'] as $key=>$value){
       if($value > 200){
-        echo "Vous popuvez commander au maximum 100 ".$key;
+        echo "Vous popuvez commander au maximum 200 ".$key;
 
         $insertcmd = false;
 
@@ -55,32 +60,12 @@
 
    
     if($insertcmd){
-        /*try {
-           $reponse = $bdd->prepare('INSERT INTO commande (cmd_cpt) VALUES ("FVR")');
-
-            try {
-                $bdd->beginTransaction();
-                $reponse->execute();
-                $cmd_id = $bdd->lastInsertId();
-                $bdd->commit();
-            } catch(PDOExecption $e) {
-                $bdd->rollback();
-                print "Error INSERTION: " . $e->getMessage() . "</br>";
-            }
-        } catch( PDOExecption $e ) {
-            print "Error DE CONNEXTION A LA BASE!: " . $e->getMessage() . "</br>";
-        }*/
-
-
-    // requete id LIMIT 0,1 DESC sur commande
     
       foreach($_POST['qnt'] as $key=>$value){
         if($value > 0){
-          // echo $key.' '.$value.'<br/>';
           $insertion = "INSERT INTO listcommande (id_prd, lcmd_qnt) VALUES (:nom_art, :qnt_art)";
           $newitem = $bdd->prepare($insertion);
           $newitem->execute(array(
-            //":cmd_cpt" => $cmd_id,
             ":nom_art" => $key,
             ":qnt_art" =>$value         
             ));
@@ -108,7 +93,7 @@
   <?php
   foreach ($tab as $key => $value) {
     if($value['stk_dispo'] <= $value['stk_min']){
-    //echo ("tab : ".$value['art_nom']."</br>");
+ 
     	?><tr>
 					<td  style="border-style: solid; border-width: 2px; border-color: black; text-align: center;background-color: #64A5AC; font-weight: bold;padding-left: 7px;padding-right: 7px;color: white;padding-top: 5px;padding-bottom: 5px; font-size: 20px;">
 					<?php echo $value['id_prd'];?>
@@ -144,7 +129,7 @@ $reponse->closeCursor();
 		</br></br></br></br>
 		
 		<input type="submit" name="envoye" value="Envoyer" style="width: 20%" onclick="VALID()">
-		<script type="text/javascript" src="fnb.js">
+		<script type="text/javascript" src="valid.js">
 		</script>
 		</form>
 	</div>

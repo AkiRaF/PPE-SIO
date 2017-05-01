@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,7 +24,7 @@
     </div>
     <div id="navbar" class="collapse navbar-collapse">
       <ul class="nav navbar-nav"> 
-        <li class="active"><a href="produits.php"><span class="glyphicon glyphicon-home"> Produits</span></a></li>
+        <li class="active"><a href="paccueil.php"><span class="glyphicon glyphicon-home"> Produits</span></a></li>
         <!--<li><a href="stock.php">Stock</a></li>-->
         <li><a href="plistecommande.php">Fiches de Demande</a></li>
       

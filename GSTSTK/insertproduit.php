@@ -1,3 +1,8 @@
+<?php
+
+    session_start();
+    //echo 'Welcome '.$_SESSION['username'];
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +16,7 @@
   background-repeat: no-repeat;
   background-attachment:fixed;">
 
-  <a href="produits.php"><span class="glyphicon glyphicon-arrow-left" style="margin-left: 144px; font-size: 20px; color: green;"> Retour</span></a>
+  <a href="paccueil.php"><span class="glyphicon glyphicon-arrow-left" style="margin-left: 144px; font-size: 20px; color: green;"> Retour</span></a>
 
 	<?php include("entete.php"); ?>
 

@@ -11,7 +11,7 @@
   background-repeat: no-repeat;
   background-attachment:fixed;">
 
-  <a href=""><span class="glyphicon glyphicon-arrow-left" style="margin-left: 144px; font-size: 20px; color: green;"> Retour</span></a>
+  <a href="paccueil.php"><span class="glyphicon glyphicon-arrow-left" style="margin-left: 144px; font-size: 20px; color: green;"> Retour</span></a>
 
   <div class="container" style="margin-top: -50px;">
 
@@ -27,7 +27,7 @@
         if(isset($_GET['id']) && !empty($_GET['id'])){
             $id = $_GET['id'];
             $sql = "SELECT * FROM produits WHERE id_prd = :id";
-            $req = array(':id' =>$id); // FAY : ici les : sont utiles
+            $req = array(':id' =>$id); 
             $res = $bdd->prepare($sql);
             $res -> execute($req);
 
@@ -38,7 +38,7 @@
                  $value = $sql;
             ?>
                     <div class="panel-body">
-                                <form id="insert" class="form-horizontal" role="form" method="POST" action="./test/testModif.php"><!-- FAY : ici faire attention à mettre la bonne url -->
+                                <form id="insert" class="form-horizontal" role="form" method="POST" action="modifUpdate.php">
                                 
 
                                 </br></br>
@@ -92,7 +92,7 @@
 
                     </br></br>
                         <div style="text-align: center;">
-                            <input type="submit" name="valid" value="Envoyer" style="text-align: center;"></span>
+                            <input type="submit" name="valid" value="Envoyer" style="text-align: center;" ></span>
                        </div>
                 </form>
             </div>
@@ -104,10 +104,10 @@
                 <?php
 
                 }
-                    
+                 $res->closeCursor();   
                 }
                     
-                //$res->closeCursor();
+                
 
                 ?>
 

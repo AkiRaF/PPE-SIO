@@ -11,7 +11,15 @@ if( isset($_SESSION['ERRMSG_ARR']) && is_array($_SESSION['ERRMSG_ARR']) && count
     unset($_SESSION['ERRMSG_ARR']);
 }
 ?>
-
+<!DOCTYPE html>
+<html>
+<head>
+<meta charste="UTF-8" >
+<link rel="stylesheet" type="text/css" href="index.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+<title>GBS-Connecter</title>
+</head>
 
 <body style="background-image: url('img/plante1.jpg');
   background-repeat: no-repeat;
@@ -22,13 +30,13 @@ if( isset($_SESSION['ERRMSG_ARR']) && is_array($_SESSION['ERRMSG_ARR']) && count
     <h2 class="form-signin-heading" style="font-size: 40px; font-weight:bold;color:  #008080;text-align: center;margin-top: 5%"><u>Se Connecter</u></h2><br/>
     <div class="connec" style="text-align: center;">
     <label for="inputEmail" class="sr-only"></label>
-    <input type="text" name="uname" id="inputEmail" class="form-control" style="text-align: center;font-size: 20px;width: 275px;margin-bottom: 4px;" placeholder="Identifier d'Administrateur" required autofocus>
+    <input type="text" name="uname" id="inputEmail" class="form-control" style="text-align: center;font-size: 20px;width: 275px;margin-bottom: 4px;margin-left: 38%;" placeholder="Identifier d'Administrateur" required autofocus/>
     </br>
     <label for="inputPassword" class="sr-only"></label>
-    <input type="password" name="upwd" id="inputPassword"  class="form-control" style="text-align: center;font-size: 20px;width: 275px;" placeholder="Mot de passe" required autofocus/>
+    <input type="password" name="upwd" id="inputPassword"  class="form-control" style="text-align: center;font-size: 20px;width: 275px;margin-left: 38%;" placeholder="Mot de passe" required autofocus/>
 
     <br/>
-    <button class="btn btn-sm btn-default btn-block" type="submit" value="Login" style="background-color:#8FBC8F; color:white;font-size: 20px;width: 200px;margin-top: 3%">Valider</button>
+    <button type="submit" value="Login" style="background-color:#8FBC8F; color:white;font-size: 20px;width: 200px;margin-top: 3%">Valider</button>
     </div>
     </form> 
 </div>

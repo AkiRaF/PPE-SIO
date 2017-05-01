@@ -1,36 +1,26 @@
 <?php
-  //connection au serveur
-  $cnx = mysql_connect( "localhost", "root", "" ) ;
- 
-  //sélection de la base de données:
-  $db  = mysql_select_db( "INFOS" ) ;
+   include('../connecBDD.php')
  
   //récupération des valeurs des champs:
   //nom:
-  $nom     = $_POST["nom"] ;
+  $id     = $_POST["id_prd"] ;
   //prenom:
-  $prenom = $_POST["prenom"] ;
+  $prenom = $_POST["prd_nom"] ;
   //adresse:
-  $adresse = $_POST["adresse"] ;
+  $adresse = $_POST["prd_cat"] ;
   //code postal:
-  $cp        = $_POST["codePostal"] ;
-  //numéro de téléphone:
-  $tel        = $_POST["telephone"] ;
- 
-  //récupération de l'identifiant de la personne:
-  $id         = $_POST["id"] ;
- 
+  $cp        = $_POST["stk_dispo"] ;
+  
+  
   //création de la requête SQL:
-  $sql = "UPDATE personnes
-            SET nom         = '$nom', 
-            prenom     = '$prenom',
-      adresse    = '$adresse',
-      cp           = '$cp',
-      telephone = '$tel'
-           WHERE id = '$id' " ;
- 
+  $sql = 'UPDATE produits
+            SET id_prd         = "$id", 
+            prd_nom    = "$prenom",
+      prd_cat   = "$adresse",
+      stk_dispo           = "$cp",
+           WHERE id_prd = "$id" '; 
   //exécution de la requête SQL:
-  $requete = mysql_query($sql, $cnx) or die( mysql_error() ) ;
+  $requete=$bdd->prepare($sql);
  
  
   //affichage des résultats, pour savoir si la modification a marchée:
